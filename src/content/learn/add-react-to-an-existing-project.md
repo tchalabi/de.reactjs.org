@@ -22,10 +22,10 @@ Routen, die mit `example.com/deine-app/` beginnen, vollständig mit React implem
 In diesem Fall empfehlen wir dir folgende Schritte:
 
 1. **Erstelle den Teil der App, die mit React umgesetzt werden soll**, indem du eines der [auf React basierenden Frameworks](/learn/start-a-new-react-project) verwendest.
-2. **Definiere `/deine-app` als *base path*** in der Konfiguration deines Frameworks ( [Next.js](https://nextjs.org/docs/api-reference/next.config.js/basepath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
+2. **Definiere `/deine-app` als *base path*** in der Konfiguration deines Frameworks ( [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
 3. **Konfiguriere deinen Server oder Proxy** so, dass alle Anfragen an `/deine-app/` von der React-Anwendung verarbeitet werden.
 
-Damit ist sichergestellt, dass der React Teil der Anwendung von den [bewährten Praktiken](/learn/start-a-new-react-project#can-i-use-react-without-a-framework) profitieren kann, die in diese Frameworks eingebaut sind.
+Damit ist sichergestellt, dass der React Teil der Anwendung von den [bewährten Praktiken](/learn/build-a-react-app-from-scratch#consider-using-a-framework) profitieren kann, die in diese Frameworks eingebaut sind.
 
 Viele der auf React basierenden Frameworks sind Fullstack und ermöglichen es deiner Anwendung den Server zu verwenden. Der gleiche Ansatzu kann aaber auch verwendet werden, wenn man auf dem Server kein JavaScript ausführen kann oder will. In diesem Fall stellt man den HTML/CSS/JS export ([`next export`](https://nextjs.org/docs/advanced-features/static-html-export) für Next.js, default für Gatsby) unter `/deine-app/` bereit.
 
@@ -46,7 +46,7 @@ Eine modulare JavaScript-Umgebung ermöglicht es dir, deine React-Komponenten in
 
 * **Wenn die Anwendung bereits in Dateien aufgeteilt ist, die `import` Statements benutzen**, versuche deine bestehende Konfiguration zu verwenden. Schreibe in deinen JS Code ein `<div/>` und prüfe, ob das einen Syntaxfehler verursacht. Sollte dabei ein Syntaxfehler auftreten, musst du [deinen Code vermutlich mit Babel umwandeln](https://babeljs.io/setup) und zudem die [Babel React Voreinstellung](https://babeljs.io/docs/babel-preset-react) aktivieren, um JSX nutzen zu können.
 
-* **Wenn die Anwendung noch nicht für das Kompilieren von JavaScript-Modulen eingerichtet ist**, richte es mit [Vite](https://vitejs.dev/) ein. Die Vite Community pflegt [viele Integrationen mit Backend Frameworks](https://github.com/vitejs/awesome-vite#integrations-with-backends), einschließlich Rails, Django und Laravel. [Folge dieser Anleitung](https://vitejs.dev/guide/backend-integration.html), falls dein Backend Framework nicht aufgelistet ist, um Vite manuell in dein Backend einzubinden.
+* **Wenn die Anwendung noch nicht für das Kompilieren von JavaScript-Modulen eingerichtet ist**, richte es mit [Vite](https://vitejs.dev/) ein. Die Vite Community pflegt [viele Integrationen mit Backend Frameworks](https://github.com/vitejs/awesome-vite#integrations-with-backends), einschließlich Rails, Django und Laravel. [Folge dieser Anleitung](https://vite.dev/guide/backend-integration.html), falls dein Backend Framework nicht aufgelistet ist, um Vite manuell in dein Backend einzubinden.
 
 Um zu prüfen, ob die Einrichtung erfolgreich war, führe im Projektordner folgenden Befehl aus:
 
@@ -58,12 +58,13 @@ Füge danach diese Zeilen am Anfang deiner primären JavaScript-Datei (vermutlic
 
 <Sandpack>
 
-```html index.html hidden
+```html public/index.html hidden
 <!DOCTYPE html>
 <html>
   <head><title>Meine App</title></head>
   <body>
     <!-- Dein bestehender Seiteninhalt (in diesem Beispiel wird er ersetzt) -->
+    <div id="root"></div>
   </body>
 </html>
 ```
@@ -85,7 +86,7 @@ Wenn der gesamte Inhalt deiner Seite mit "Hello, world!" ersetzt wurde, hat alle
 
 <Note>
 
-Eine modulare JavaScript-Umgebung zum ersten Mal in ein bestehendes Projekt zu integrieren, kann sich beängstigend anfühlen, aber es ist es wert! Wenn du nicht weiterkommst, versuche es mit unseren [Community-Ressourcen](/community) oder dem [Vite Chat](https://chat.vitejs.dev/).
+Eine modulare JavaScript-Umgebung zum ersten Mal in ein bestehendes Projekt zu integrieren, kann sich beängstigend anfühlen, aber es ist es wert! Wenn du nicht weiterkommst, versuche es mit unseren [Community-Ressourcen](/community) oder dem [Vite Chat](https://chat.vite.dev/).
 
 </Note>
 
@@ -121,7 +122,7 @@ Das ermöglicht dir das HTML-Element mit [`document.getElementById`](https://dev
 
 <Sandpack>
 
-```html index.html
+```html public/index.html
 <!DOCTYPE html>
 <html>
   <head><title>Meine App</title></head>
@@ -150,7 +151,7 @@ root.render(<NavigationBar />);
 
 Beachte, wie der ursprüngliche HTML-Inhalt aus `index.html` erhalten bleibt, aber deine eigene React-Komponente `NavigationBar` nun innerhalb des `<nav id="navigation">` in deinem HTML erscheint. Lies die Dokumentation von [`createRoot`](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react), um mehr darüber zu erfahren, wie man React-Komponenten in einer vorhandenen HTML-Seite rendert.
 
-Wenn du React in ein bestehendes Projekt integrierst, ist es üblich, mit kleinen interaktiven Komponenten (wie Buttons) zu beginnen und dich dann schrittweise "nach oben zu arbeiten", bis schließlich deine gesamte Seite mit React erstellt ist. Wenn du diesen Punkt einmal erreichst, empfehlen wir, kurz danach auf [ein React-Framework](/learn/start-a-new-react-project) umzusteigen, um das Beste aus React herauszuholen.
+Wenn du React in ein bestehendes Projekt integrierst, ist es üblich, mit kleinen interaktiven Komponenten (wie Buttons) zu beginnen und dich dann schrittweise "nach oben zu arbeiten", bis schließlich deine gesamte Seite mit React erstellt ist. Wenn du diesen Punkt einmal erreichst, empfehlen wir kurz danach auf [ein React-Framework](/learn/start-a-new-react-project) umzusteigen, um das Beste aus React herauszuholen.
 
 ## React Native für eine bestehende mobile App verwenden {/*using-react-native-in-an-existing-native-mobile-app*/}
 

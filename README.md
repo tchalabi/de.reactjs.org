@@ -7,7 +7,7 @@ This repo contains the source code and documentation powering [de.react.dev](htt
 ### Prerequisites
 
 1. Git
-1. Node: any 12.x version starting with v12.0.0 or greater
+1. Node: any version starting with v16.8.0 or greater
 1. Yarn: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
 1. A fork of the repo (for any contributions)
 1. A clone of the [de.react.dev repo](https://github.com/reactjs/de.react.dev) on your local machine
@@ -51,7 +51,7 @@ The documentation is divided into several sections with a different tone and pur
 
 1. `git add -A && git commit -m "My message"` (replacing `My message` with a commit message, such as `Fix header logo on Android`) to stage and commit your changes
 1. `git push my-fork-name the-name-of-my-branch`
-1. Go to the [de,react.dev repo](https://github.com/reactjs/de,react.dev) and you should see recently pushed branches.
+1. Go to the [de.react.dev repo](https://github.com/reactjs/de.react.dev) and you should see recently pushed branches.
 1. Follow GitHub's instructions.
 1. If possible, include screenshots of visual changes. A preview build is triggered after your changes are pushed to GitHub.
 
